@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="author" content="Mus Musculus Team">
+            <title>Mus Musculus Summarizer</title>
+            <link rel="stylesheet" type="text/css" href="../css/main.css">
+            <link rel="icon" type="image/png" href="../img/DALLE_2024-10-04_19.22.56_-_A_comic-style_mouse_similar_to_the_style_of_Tom_and_Jerry_but_with_exaggerated_big_muscles._The_mouse_is_standing_confidently_flexing_its_arms_s.webp"/>
+        </head>
+    </head>
+
+    <body>
+        <nav>
+            <ul class="leftbar">
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="../visualization/visualization.html" class="barbuttons">Magic</a></li>
+            </ul>
+            <div>
+                <img src="../img/DALLE_2024-10-04_19.22.56_-_A_comic-style_mouse_similar_to_the_style_of_Tom_and_Jerry_but_with_exaggerated_big_muscles._The_mouse_is_standing_confidently_flexing_its_arms_s.webp" id="logo" alt="Cartoonish Mouse Icon">
+                <h1 id="maintitle">Mus Musculus</h1>
+            </div>
+        </nav><br>
+        <div class="content">
+            <h2>Visualizator</h2>
+            <div id="main_interface">
+                <p>Please upload the metadata of the scientific experiment below:</p>
+                <center><h3>Upload the metadata:</h3>
+                <!-- <input type="file" name="data" id="data" class="file-input" placeholder="i_Investigation.txt"/> -->
+                <p>For the demo, we have pre-prepeared 2 Scientific Experiments as the AI is not yet integrated.</p>
+                <form>
+                    <input onclick="set_osd()" type="radio" id="osd_379" name="option" checked><a href="https://osdr.nasa.gov/bio/repo/data/studies/OSD-379">OSD 379</a>
+                    <input onclick="set_osd()" type="radio" id="osd_665" name="option"><a href="https://osdr.nasa.gov/bio/repo/data/studies/OSD-665">OSD 665</a>
+                </form>
+                <script>
+                    document.getElementById('osd_379').checked = true;
+                    document.getElementById('osd_665').checked = false;
+                </script>
+                <br><br>
+                <button onclick="show_output()" id="submit_button">Submit</button>
+                </center>
+                <div id="output" style="display: none;">
+                    <h4 id="overview_text"></h4>
+                    <center><h3 id="title_animation"></h3>
+                    <p id="generating"></p></center>
+                    <p></p><br>
+                    <img src="../img/Template_OSD-379.png" style="width: 100%; display: none" id="template">
+                    <div id="video_div" style="display: none;">
+                        <h4 id="video_overview"></h4>
+                        <center>
+                        <p id="generating_video"></p>
+                        <div id="video_frame" style="display: none;">
+                            <a href="https://drive.google.com/file/d/1h4vOvLxzSiz2sfnhe7yjTxSIWmGO6W9y/view?usp=sharing" id="link_drive"><img width="100%" id="video_data" src="../img/Thumbnail_OSD-379.png" style="display: block;"></a>
+                        </div>
+                        </center>
+                    </div><br><br>
+                    <div id="chat_div" style="display: none;">
+                        <center>
+                        <form>
+                            <input id="chat_bot" type="text" placeholder="Didn't understand something? Ask me!"/>
+                            <input type="submit" value="Submit" id="chat_bot_submit">
+                        </form>
+                        </center>
+                    </div>
+                </div>
+                <script>
+                    function show_output() {
+                        var output_div = document.getElementById("output");
+                        if (output_div.style.display === "none") {
+                            output_div.style.display = "block";
+                            document.getElementById("title_animation").innerHTML = "Processing."
+                            setTimeout( () => { document.getElementById("title_animation").innerHTML = "Processing.."
+                                setTimeout( () => { document.getElementById("title_animation").innerHTML = "Processing..."
+                                    setTimeout( () => { document.getElementById("title_animation").innerHTML = ""
+                                                        document.getElementById("generating").innerHTML = "Generating Overview"
+                                        setTimeout( () => { document.getElementById("overview_text").innerHTML = "Here is an overview of the experiment:"
+                                                            document.getElementById("template").style.display = "block"
+                                                            document.getElementById("generating").innerHTML = ""
+                                                            document.getElementById("video_div").style.display = "block"
+                                                            document.getElementById("generating_video").innerHTML = "Generating video"
+                                                            setTimeout( () => { document.getElementById("video_overview").innerHTML = "Watch this video for better understanding of the experiment:"
+                                                                                document.getElementById("generating_video").innerHTML = ""
+                                                                                document.getElementById("video_frame").style.display = "block"
+                                                                                document.getElementById("chat_div").style.display = "block"
+                                                            }, 100)}, 1000)}, 1000)}, 1000)}, 1000)
+                        }
+                    }
+                    function set_osd() {
+                        if (event.currentTarget.id === "osd_379") {
+                            document.getElementById("template").src = "../img/Template_OSD-379.png"
+                            document.getElementById("video_data").src = "../img/Thumbnail_OSD-379.png"
+                            document.getElementById("link_drive").src = "https://drive.google.com/file/d/1h4vOvLxzSiz2sfnhe7yjTxSIWmGO6W9y/view?usp=sharing"
+                            
+                        }
+                        if (event.currentTarget.id === "osd_665") {
+                            document.getElementById("template").src = "../img/Template_OSD-665.png"
+                            document.getElementById("link_drive").src = "../img/Thumbnail_OSD-665.png"
+                            document.getElementById("link_drive").src = "https://drive.google.com/file/d/1euyno3N9DsKaC4ucl0tl1Jy0hlfnZWnL/view?usp=sharing"
+                        }
+                    }
+                </script>
+            </div>
+        </div><br>
+        <footer id="footer">
+            <p>For NASA Space Apps Challenge 2024 - Göteborg Local Event</p>
+            <p>Mus Musculus - Omar Moussa, Jakob Parakenings, Ville Vikingsson, Tomáš Zajíc, Julia Zeidler</p>
+          </footer> 
+    </body>
+</html>
