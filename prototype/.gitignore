@@ -1,0 +1,10 @@
+# Ignore config file
+config.json
+
+*.txt
+*.pdf
+*.png
+*.jpg
+*.webp
+*.env
+*.log
