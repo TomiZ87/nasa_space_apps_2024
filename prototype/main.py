@@ -11,7 +11,7 @@ with open('config.json') as config_file:
 openai.api_key = openai_api_key
 
 def read_filepath():
-    filepath = input("Enter the path of your file below:\n")
+    filepath = input("Enter the path of your OSD metadata file below:\n")
     return filepath
 
 def parse_osd_file(filepath):
@@ -187,7 +187,7 @@ understand the science behind it.
 
 def main():
     #filepath = read_filepath()
-    parsed_metadata = parse_osd_file("i_Investigation.txt")
+    parsed_metadata = parse_osd_file(read_filepath())
     summary = generate_study_summary(parsed_metadata)
     
     poster_html = (generate_poster_html(summary, parsed_metadata)).replace("```", "")
